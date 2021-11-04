@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY") #'00*no)kolhiuh8fwzg483_@ln3g-jdi(ific
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0)) #True
 
-ALLOWED_HOSTS = [] #os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ") #[]
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ") #[]
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'hello_world_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['%s/templates/' % BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
