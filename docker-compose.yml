@@ -21,5 +21,17 @@ services:
       MYSQL_DB: 'django_app_demo'
       MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'   
+  celery:
+    build: ./app
+    command: celery worker --app=hello_world_django --loglevel=info
+    volumes:
+      - ./app/:/usr/src/app/
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - web
+      - redis
+  redis:
+    image: redis:6-alpine
 
