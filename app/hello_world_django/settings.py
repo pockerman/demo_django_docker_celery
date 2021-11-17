@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "foo") #'00*no)kolhiuh8fwzg483_@ln3g-j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=1)) #True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost, 127.0.0.1 0.0.0.0").split(" ") #[]
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1 localhost 0.0.0.0").split(" ") #[]
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.mysql'), #'django.db.backends.mysql',
         'NAME': os.environ.get("SQL_DATABASE", 'django_app_demo'), #BASE_DIR / "db.sqlite3"), #'django_app_demo',
         'USER': os.environ.get("SQL_USER", "root"), #'root',
-        'PASSWORD': os.environ.get("SQL_PASSWORD", "david_hilbert"), #'password',
+        'PASSWORD': os.environ.get("SQL_PASSWORD", "password"), #'password',
         'HOST': os.environ.get("SQL_HOST", "localhost"), #'db',
         'PORT': os.environ.get("SQL_PORT", "3306"), #3306,
     }
