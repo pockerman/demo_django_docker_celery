@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY") #'00*no)kolhiuh8fwzg483_@ln3g-jdi(ificev6fz+vzns$^ar'
+SECRET_KEY = os.environ.get("SECRET_KEY", "foo") #'00*no)kolhiuh8fwzg483_@ln3g-jdi(ificev6fz+vzns$^ar'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0)) #True
+DEBUG = int(os.environ.get("DEBUG", default=1)) #True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ") #[]
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost, 127.0.0.1 0.0.0.0").split(" ") #[]
 
 
 # Application definition
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'hello_world_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"), #'django.db.backends.mysql',
-        'NAME': os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"), #'django_app_demo',
-        'USER': os.environ.get("SQL_USER", "user"), #'root',
-        'PASSWORD': os.environ.get("SQL_PASSWORD", "password"), #'password',
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.mysql'), #'django.db.backends.mysql',
+        'NAME': os.environ.get("SQL_DATABASE", 'django_app_demo'), #BASE_DIR / "db.sqlite3"), #'django_app_demo',
+        'USER': os.environ.get("SQL_USER", "root"), #'root',
+        'PASSWORD': os.environ.get("SQL_PASSWORD", "david_hilbert"), #'password',
         'HOST': os.environ.get("SQL_HOST", "localhost"), #'db',
         'PORT': os.environ.get("SQL_PORT", "3306"), #3306,
     }
