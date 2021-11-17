@@ -3,6 +3,7 @@ version: '3.3'
 services:
   web:
     build: ./app
+    container_name: my_django_app_django_container
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./app/:/usr/src/app/
@@ -14,15 +15,15 @@ services:
       - db
   db:
     image: mysql:5.7
-    container_name: mysql_my_django_app_celery
+    container_name: my_django_app_mysql_container
     ports:
       - '3306:3306'
     environment:
       MYSQL_DB: 'django_app_demo'
-      MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'   
   celery:
+    container_name: my_django_app_celery_container
     build: ./app
     command: celery worker --app=hello_world_django --loglevel=info
     volumes:
@@ -34,4 +35,5 @@ services:
       - redis
   redis:
     image: redis:6-alpine
+    container_name: my_django_app_redis_container
 

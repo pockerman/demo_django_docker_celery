@@ -14,9 +14,9 @@ class TaskModel(models.Model):
                       ("FAILURE", "FAILURE"),)
 
     # the task id of the computation
-    task_id = models.CharField(max_length=300, primary_key=True)
+    task_id = models.CharField(max_length=200, primary_key=True)
     result = models.CharField(max_length=50, choices=RESULT_OPTIONS)
-    error_explanation = models.CharField(max_length=500, default=DEFAULT_ERROR_EXPLANATION)
+    error_explanation = models.TextField(default=DEFAULT_ERROR_EXPLANATION)
 
     class Meta:
         db_table = 'tasks'
